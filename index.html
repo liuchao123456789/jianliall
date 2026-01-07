@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>刘超 | 前端开发工程师</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap"
+			rel="stylesheet">
+		<style>
+			:root {
+				--primary: #2563eb;
+				--primary-dark: #1d4ed8;
+				--primary-light: #dbeafe;
+				--secondary: #10b981;
+				--dark: #1f2937;
+				--dark-light: #374151;
+				--gray: #6b7280;
+				--gray-light: #f3f4f6;
+				--gray-border: #e5e7eb;
+				--white: #ffffff;
+				--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+				--shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+				--radius: 8px;
+				--radius-sm: 4px;
+				--transition: all 0.2s ease;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				font-family: 'Inter', sans-serif;
+				color: var(--dark);
+				background-color: var(--white);
+				line-height: 1.6;
+				font-weight: 400;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 24px;
+			}
+
+			/* 顶部导航 */
+			.header {
+				background-color: var(--white);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				box-shadow: var(--shadow);
+				padding: 20px 0;
+			}
+
+			.nav-container {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				font-weight: 700;
+				font-size: 1.5rem;
+				color: var(--dark);
+				text-decoration: none;
+			}
+
+			.logo-circle {
+				width: 36px;
+				height: 36px;
+				background-color: var(--primary);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+				font-weight: 600;
+			}
+
+			.nav-links {
+				display: flex;
+				gap: 32px;
+			}
+
+			.nav-link {
+				color: var(--dark);
+				text-decoration: none;
+				font-weight: 500;
+				font-size: 0.95rem;
+				transition: var(--transition);
+				position: relative;
+			}
+
+			.nav-link:hover {
+				color: var(--primary);
+			}
+
+			.nav-link::after {
+				content: '';
+				position: absolute;
+				bottom: -5px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background-color: var(--primary);
+				transition: var(--transition);
+			}
+
+			.nav-link:hover::after {
+				width: 100%;
+			}
+
+			.download-btn {
+				background-color: var(--primary);
+				color: white;
+				border: none;
+				padding: 10px 24px;
+				border-radius: var(--radius);
+				font-weight: 500;
+				cursor: pointer;
+				transition: var(--transition);
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.download-btn:hover {
+				background-color: var(--primary-dark);
+				transform: translateY(-2px);
+				box-shadow: var(--shadow);
+			}
+
+			/* 英雄区域 */
+			.hero {
+				padding: 80px 0 60px;
+				background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+			}
+
+			.hero-container {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 60px;
+				align-items: center;
+			}
+
+			@media (min-width: 992px) {
+				.hero-container {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+
+			.hero-text {
+				max-width: 600px;
+			}
+
+			.hero-badge {
+				display: inline-block;
+				background-color: var(--primary-light);
+				color: var(--primary);
+				padding: 6px 16px;
+				border-radius: 50px;
+				font-size: 0.875rem;
+				font-weight: 500;
+				margin-bottom: 20px;
+			}
+
+			.hero-title {
+				font-size: 3rem;
+				font-weight: 700;
+				line-height: 1.1;
+				margin-bottom: 16px;
+				color: var(--dark);
+			}
+
+			.hero-title span {
+				color: var(--primary);
+			}
+
+			.hero-subtitle {
+				font-size: 1.25rem;
+				color: var(--dark-light);
+				margin-bottom: 32px;
+				font-weight: 400;
+			}
+
+			.hero-contact {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 24px;
+				margin-bottom: 32px;
+			}
+
+			.contact-item {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				color: var(--dark);
+				text-decoration: none;
+				transition: var(--transition);
+			}
+
+			.contact-item:hover {
+				color: var(--primary);
+			}
+
+			.contact-icon {
+				width: 40px;
+				height: 40px;
+				background-color: var(--white);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: var(--shadow);
+				color: var(--primary);
+			}
+
+			.hero-avatar {
+				display: flex;
+				justify-content: center;
+			}
+
+			.avatar-wrapper {
+				position: relative;
+				width: 320px;
+				height: 320px;
+			}
+
+			.avatar-container {
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+				overflow: hidden;
+				box-shadow: var(--shadow-lg);
+				background-color: var(--gray-light);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 8px solid white;
+				transition: var(--transition);
+			}
+
+			.avatar-container img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.avatar-placeholder {
+				font-size: 100px;
+				color: var(--primary);
+			}
+
+			/* 主要内容区域 */
+			.main-content {
+				padding: 80px 0;
+				background-color: var(--white);
+			}
+
+			.content-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 60px;
+			}
+
+			@media (min-width: 992px) {
+				.content-grid {
+					grid-template-columns: 2fr 1fr;
+					gap: 80px;
+				}
+			}
+
+			/* 卡片样式 */
+			.card {
+				background-color: var(--white);
+				border-radius: var(--radius);
+				box-shadow: var(--shadow);
+				padding: 32px;
+				margin-bottom: 32px;
+				border: 1px solid var(--gray-border);
+				transition: var(--transition);
+			}
+
+			.card:hover {
+				box-shadow: var(--shadow-lg);
+			}
+
+			.card:last-child {
+				margin-bottom: 0;
+			}
+
+			.card-header {
+				display: flex;
+				align-items: center;
+				margin-bottom: 24px;
+				padding-bottom: 16px;
+				border-bottom: 1px solid var(--gray-border);
+			}
+
+			.card-icon {
+				width: 48px;
+				height: 48px;
+				background-color: var(--primary-light);
+				border-radius: var(--radius);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 16px;
+				color: var(--primary);
+				font-size: 1.25rem;
+			}
+
+			.card-title {
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--dark);
+			}
+
+			/* 工作经历时间线 */
+			.timeline {
+				position: relative;
+				padding-left: 30px;
+			}
+
+			.timeline::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				width: 2px;
+				background-color: var(--gray-border);
+			}
+
+			.timeline-item {
+				position: relative;
+				margin-bottom: 32px;
+			}
+
+			.timeline-item:last-child {
+				margin-bottom: 0;
+			}
+
+			.timeline-dot {
+				position: absolute;
+				left: -36px;
+				top: 5px;
+				width: 16px;
+				height: 16px;
+				border-radius: 50%;
+				background-color: var(--primary);
+				border: 3px solid var(--white);
+				box-shadow: 0 0 0 3px var(--primary-light);
+			}
+
+			.timeline-header {
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				margin-bottom: 8px;
+				align-items: flex-start;
+			}
+
+			.timeline-title {
+				font-size: 1.25rem;
+				font-weight: 600;
+				color: var(--dark);
+			}
+
+			.timeline-period {
+				background-color: var(--gray-light);
+				color: var(--dark);
+				padding: 4px 12px;
+				border-radius: 50px;
+				font-size: 0.875rem;
+				font-weight: 500;
+			}
+
+			.timeline-company {
+				color: var(--primary);
+				font-weight: 500;
+				margin-bottom: 12px;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.timeline-company i {
+				font-size: 0.875rem;
+			}
+
+			.timeline-description {
+				color: var(--dark-light);
+			}
+
+			.timeline-description ul {
+				padding-left: 20px;
+			}
+
+			.timeline-description li {
+				margin-bottom: 8px;
+			}
+
+			/* 项目展示 */
+			.project-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 24px;
+			}
+
+			@media (min-width: 768px) {
+				.project-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+
+			.project-card {
+				border: 1px solid var(--gray-border);
+				border-radius: var(--radius);
+				overflow: hidden;
+				transition: var(--transition);
+				height: 100%;
+				cursor: pointer;
+			}
+
+			.project-card:hover {
+				transform: translateY(-5px);
+				box-shadow: var(--shadow-lg);
+			}
+
+			.project-header {
+				background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+				color: white;
+				padding: 20px;
+				border-bottom: 1px solid var(--gray-border);
+			}
+
+			.project-title {
+				font-size: 1.125rem;
+				font-weight: 600;
+				color: white;
+				margin-bottom: 4px;
+			}
+
+			.project-period {
+				font-size: 0.875rem;
+				opacity: 0.9;
+			}
+
+			.project-body {
+				padding: 20px;
+			}
+
+			.project-company {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				color: var(--gray);
+				font-size: 0.875rem;
+				margin-bottom: 12px;
+			}
+
+			.project-description {
+				color: var(--dark-light);
+				margin-bottom: 20px;
+				font-size: 0.95rem;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			.project-tech {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+
+			.tech-tag {
+				background-color: var(--primary-light);
+				color: var(--primary);
+				padding: 4px 12px;
+				border-radius: 50px;
+				font-size: 0.75rem;
+				font-weight: 500;
+			}
+
+			/* 技能部分 */
+			.skill-category {
+				margin-bottom: 24px;
+			}
+
+			.skill-category:last-child {
+				margin-bottom: 0;
+			}
+
+			.skill-category-title {
+				font-size: 1.125rem;
+				font-weight: 600;
+				margin-bottom: 16px;
+				color: var(--dark);
+			}
+
+			.skill-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+			}
+
+			.skill-item {
+				background-color: var(--gray-light);
+				color: var(--dark);
+				padding: 10px 16px;
+				border-radius: var(--radius);
+				font-weight: 500;
+				font-size: 0.95rem;
+				transition: var(--transition);
+				border: 1px solid transparent;
+			}
+
+			.skill-item:hover {
+				border-color: var(--primary);
+				background-color: var(--primary-light);
+				color: var(--primary);
+			}
+
+			/* 教育经历 */
+			.education-card {
+				display: flex;
+				gap: 20px;
+				align-items: center;
+				padding: 24px;
+				background-color: var(--gray-light);
+				border-radius: var(--radius);
+				border: 1px solid var(--gray-border);
+			}
+
+			.education-icon {
+				width: 60px;
+				height: 60px;
+				background-color: var(--white);
+				border-radius: var(--radius);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: var(--primary);
+				font-size: 1.5rem;
+				flex-shrink: 0;
+				box-shadow: var(--shadow);
+			}
+
+			.education-info h3 {
+				font-size: 1.25rem;
+				font-weight: 600;
+				margin-bottom: 4px;
+				color: var(--dark);
+			}
+
+			.education-details {
+				color: var(--dark-light);
+				font-size: 0.95rem;
+			}
+
+			/* 自我评价 */
+			.evaluation-item {
+				display: flex;
+				gap: 16px;
+				margin-bottom: 20px;
+			}
+
+			.evaluation-icon {
+				width: 40px;
+				height: 40px;
+				background-color: var(--primary-light);
+				border-radius: var(--radius);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: var(--primary);
+				flex-shrink: 0;
+			}
+
+			.evaluation-text {
+				flex: 1;
+				color: var(--dark-light);
+			}
+
+			/* 证书展示 */
+			.certificate-badge {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				padding: 16px;
+				background-color: var(--gray-light);
+				border-radius: var(--radius);
+				border: 1px solid var(--gray-border);
+			}
+
+			.certificate-icon {
+				width: 48px;
+				height: 48px;
+				background-color: var(--white);
+				border-radius: var(--radius);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: var(--secondary);
+				font-size: 1.25rem;
+				box-shadow: var(--shadow);
+			}
+
+			.certificate-info h4 {
+				font-size: 1rem;
+				font-weight: 600;
+				margin-bottom: 4px;
+				color: var(--dark);
+			}
+
+			.certificate-info p {
+				color: var(--gray);
+				font-size: 0.875rem;
+			}
+
+			/* 项目详情模态框 */
+			.modal {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.7);
+				z-index: 1000;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+
+			.modal.show {
+				display: flex;
+				opacity: 1;
+			}
+
+			.modal-content {
+				background-color: var(--white);
+				border-radius: var(--radius);
+				padding: 32px;
+				max-width: 800px;
+				width: 100%;
+				max-height: 80vh;
+				overflow-y: auto;
+				box-shadow: var(--shadow-lg);
+				transform: translateY(-20px);
+				transition: transform 0.3s ease;
+			}
+
+			.modal.show .modal-content {
+				transform: translateY(0);
+			}
+
+			.modal-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				margin-bottom: 24px;
+				padding-bottom: 16px;
+				border-bottom: 2px solid var(--gray-border);
+			}
+
+			.modal-title {
+				font-size: 1.8rem;
+				font-weight: 700;
+				color: var(--dark);
+				margin-bottom: 8px;
+			}
+
+			.modal-subtitle {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				color: var(--primary);
+				font-weight: 500;
+				font-size: 1rem;
+			}
+
+			.modal-close {
+				background: none;
+				border: none;
+				font-size: 1.8rem;
+				color: var(--gray);
+				cursor: pointer;
+				transition: var(--transition);
+				line-height: 1;
+				padding: 0;
+				width: 32px;
+				height: 32px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.modal-close:hover {
+				color: var(--dark);
+			}
+
+			.modal-section {
+				margin-bottom: 24px;
+			}
+
+			.modal-section-title {
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: var(--dark);
+				margin-bottom: 12px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+
+			.modal-section-title i {
+				color: var(--primary);
+			}
+
+			.modal-section-content {
+				color: var(--dark-light);
+				line-height: 1.7;
+			}
+
+			.modal-section-content ul {
+				padding-left: 20px;
+				margin-bottom: 16px;
+			}
+
+			.modal-section-content li {
+				margin-bottom: 8px;
+			}
+
+			.modal-tech-stack {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-top: 16px;
+			}
+
+			.modal-tech-tag {
+				background-color: var(--primary-light);
+				color: var(--primary);
+				padding: 6px 16px;
+				border-radius: 50px;
+				font-size: 0.85rem;
+				font-weight: 500;
+			}
+
+			/* 页脚 */
+			footer {
+				background-color: var(--dark);
+				color: white;
+				padding: 60px 0 40px;
+			}
+
+			.footer-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+
+			.footer-logo {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				font-weight: 700;
+				font-size: 1.5rem;
+				margin-bottom: 24px;
+			}
+
+			.footer-contact {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 24px;
+				margin-bottom: 32px;
+			}
+
+			.footer-contact-item {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				color: white;
+				text-decoration: none;
+				transition: var(--transition);
+			}
+
+			.footer-contact-item:hover {
+				color: var(--primary-light);
+			}
+
+			.copyright {
+				color: var(--gray);
+				font-size: 0.875rem;
+				padding-top: 32px;
+				border-top: 1px solid var(--dark-light);
+				width: 100%;
+			}
+
+			/* 响应式调整 */
+			@media (max-width: 768px) {
+				.nav-links {
+					display: none;
+				}
+
+				.hero-title {
+					font-size: 2.5rem;
+				}
+
+				.avatar-wrapper {
+					width: 250px;
+					height: 250px;
+				}
+
+				.card {
+					padding: 24px;
+				}
+
+				.modal-content {
+					padding: 20px;
+					max-height: 90vh;
+				}
+
+				.modal-title {
+					font-size: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 项目详情模态框 -->
+		<div id="projectModal" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div style="flex: 1;">
+						<h2 class="modal-title" id="modalProjectTitle">项目标题</h2>
+						<div class="modal-subtitle" id="modalProjectCompany">
+							<i class="fas fa-building"></i>
+							<span id="modalCompanyName">公司名称</span>
+							<span>•</span>
+							<span id="modalProjectPeriod">项目时间</span>
+						</div>
+					</div>
+					<button class="modal-close" id="closeModal">&times;</button>
+				</div>
+
+				<div class="modal-section">
+					<h3 class="modal-section-title">
+						<i class="fas fa-info-circle"></i> 项目描述
+					</h3>
+					<div class="modal-section-content" id="modalProjectDescription">
+						项目描述内容
+					</div>
+				</div>
+
+				<div class="modal-section">
+					<h3 class="modal-section-title">
+						<i class="fas fa-cogs"></i> 技术栈与实现
+					</h3>
+					<div class="modal-section-content">
+						<div id="modalProjectTechImplementation">
+							技术实现内容
+						</div>
+						<div class="modal-tech-stack" id="modalTechStack">
+							<!-- 技术标签动态添加 -->
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-section">
+					<h3 class="modal-section-title">
+						<i class="fas fa-tasks"></i> 责任描述
+					</h3>
+					<div class="modal-section-content" id="modalProjectResponsibilities">
+						责任描述内容
+					</div>
+				</div>
+
+				<div class="modal-section">
+					<h3 class="modal-section-title">
+						<i class="fas fa-star"></i> 项目亮点
+					</h3>
+					<div class="modal-section-content" id="modalProjectHighlights">
+						项目亮点内容
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 头部导航 -->
+		<header class="header">
+			<div class="container">
+				<nav class="nav-container">
+					<a href="#" class="logo">
+						<div class="logo-circle">L</div>
+						<span>刘超</span>
+					</a>
+
+					<div class="nav-links">
+						<a href="#experience" class="nav-link">工作经历</a>
+						<a href="#projects" class="nav-link">项目经验</a>
+						<a href="#skills" class="nav-link">专业技能</a>
+						<a href="#about" class="nav-link">关于我</a>
+					</div>
+
+					<button class="download-btn" id="downloadBtn">
+						<i class="fas fa-download"></i> 下载简历
+					</button>
+				</nav>
+			</div>
+		</header>
+
+		<!-- 英雄区域 -->
+		<section class="hero">
+			<div class="container">
+				<div class="hero-container">
+					<div class="hero-text">
+						<div class="hero-badge">前端开发工程师 · 4年经验</div>
+						<h1 class="hero-title">你好，我是 <span>刘超</span></h1>
+						<p class="hero-subtitle">专注于Vue.js、TypeScript和现代前端技术栈，致力于构建高性能、可访问的用户界面。</p>
+
+						<div class="hero-contact">
+							<a href="tel:13572746738" class="contact-item">
+								<div class="contact-icon">
+									<i class="fas fa-phone"></i>
+								</div>
+								<span>13572746738</span>
+							</a>
+
+							<a href="mailto:2253938296@qq.com" class="contact-item">
+								<div class="contact-icon">
+									<i class="fas fa-envelope"></i>
+								</div>
+								<span>2253938296@qq.com</span>
+							</a>
+
+							<div class="contact-item">
+								<div class="contact-icon">
+									<i class="fas fa-dollar-sign"></i>
+								</div>
+								<span>期望薪资: 10-13K</span>
+							</div>
+						</div>
+
+						<button class="download-btn" id="contactBtn">
+							<i class="fas fa-paper-plane"></i> 立即联系
+						</button>
+					</div>
+
+					<div class="hero-avatar">
+						<div class="avatar-wrapper">
+							<div class="avatar-container" id="avatarContainer">
+								<!-- 假头像图片 -->
+								<img src="./my.jpg" alt="刘超的个人照片" onerror="this.style.display='none'; document.querySelector('.avatar-placeholder').style.display='flex';">
+								<div class="avatar-placeholder" style="display: none;">
+									<i class="fas fa-user"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 主要内容 -->
+		<main class="main-content">
+			<div class="container">
+				<div class="content-grid">
+					<!-- 左侧主要内容 -->
+					<div class="left-column">
+						<!-- 工作经历 -->
+						<section id="experience" class="card">
+							<div class="card-header">
+								<div class="card-icon">
+									<i class="fas fa-briefcase"></i>
+								</div>
+								<h2 class="card-title">工作经历</h2>
+							</div>
+
+							<div class="timeline">
+								<div class="timeline-item">
+									<div class="timeline-dot"></div>
+									<div class="timeline-content">
+										<div class="timeline-header">
+											<h3 class="timeline-title">前端开发工程师</h3>
+											<div class="timeline-period">2025.06 - 至今</div>
+										</div>
+										<div class="timeline-company">
+											<i class="fas fa-building"></i> 西安云锦汇信息科技有限公司 · 研发部
+										</div>
+										<div class="timeline-description">
+											<ul>
+												<li>根据产品需求、UI设计稿完成前端开发任务</li>
+												<li>根据接口文档，完成前后端的联调</li>
+												<li>完成测试、验收过程中的bug修复</li>
+												<li>参与Web前端开发规范的制定</li>
+												<li>解决原有功能的浏览器兼容性问题</li>
+												<li>负责平台Web前端架构设计，带领团队高质高效完成开发任务</li>
+												<li>维护前端开发规范文档、前端组件库</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class="timeline-item">
+									<div class="timeline-dot"></div>
+									<div class="timeline-content">
+										<div class="timeline-header">
+											<h3 class="timeline-title">前端开发工程师</h3>
+											<div class="timeline-period">2022.07 - 2025.04</div>
+										</div>
+										<div class="timeline-company">
+											<i class="fas fa-building"></i> 思浦奈医疗科技(上海)有限公司 · 研发部
+										</div>
+										<div class="timeline-description">
+											<ul>
+												<li>负责基于Vue vite框架的项目开发，确保功能实现符合业务需求</li>
+												<li>完善现有系统的功能模块，提升用户体验和系统性能</li>
+												<li>实现CT的图像显示以及三维立体重建影像</li>
+												<li>维护原有模块，保证系统的稳定性和可维护性</li>
+												<li>使用cornerstone实现页面普通的影像显示和影像操作以及参数测量等功能</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class="timeline-item">
+									<div class="timeline-dot"></div>
+									<div class="timeline-content">
+										<div class="timeline-header">
+											<h3 class="timeline-title">前端开发工程师</h3>
+											<div class="timeline-period">2022.01 - 2022.06</div>
+										</div>
+										<div class="timeline-company">
+											<i class="fas fa-building"></i> 上海挚世科技信息有限公司 · 研发部
+										</div>
+										<div class="timeline-description">
+											<ul>
+												<li>使用HTML5完成动画特效，熟练掌握HTML，CSS布局</li>
+												<li>使用多个前端开发软件，团队合作完成pc端或移动端项目研发</li>
+												<li>能够将设计高度还原，熟练使用AJAX,JQuery,javascript等等</li>
+												<li>使用前端主流框架，比如vue和node进行框架搭建和编写代码</li>
+												<li>根据产品设需求，配合后台开发人员实现产品界面和功能，维护及优化前端页面性能</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<!-- 项目经验 -->
+						<section id="projects" class="card">
+							<div class="card-header">
+								<div class="card-icon">
+									<i class="fas fa-code-branch"></i>
+								</div>
+								<h2 class="card-title">项目经验</h2>
+							</div>
+
+							<div class="project-grid">
+								<!-- 项目1 -->
+								<div class="project-card" data-project-id="1">
+									<div class="project-header">
+										<h3 class="project-title">西铁院校友小程序+pc</h3>
+										<div class="project-period">2025/06 - 至今</div>
+									</div>
+									<div class="project-body">
+										<div class="project-company">
+											<i class="fas fa-building"></i> 西安云锦汇科技有限公司
+										</div>
+										<p class="project-description">
+											本项目是一个使用vue3+ts的项目做的管理端，移动端是一个原生的微信小程序开发项目，里面包含小程序注册，校友会管理、企业招聘以及发起活动，微信消息推送等功能。
+										</p>
+										<div class="project-tech">
+											<span class="tech-tag">Vue3</span>
+											<span class="tech-tag">TypeScript</span>
+											<span class="tech-tag">微信小程序</span>
+											<span class="tech-tag">ECharts</span>
+										</div>
+									</div>
+								</div>
+
+								<!-- 项目2 -->
+								<div class="project-card" data-project-id="2">
+									<div class="project-header">
+										<h3 class="project-title">脊柱外科测量软件</h3>
+										<div class="project-period">2022/07 - 2025/04</div>
+									</div>
+									<div class="project-body">
+										<div class="project-company">
+											<i class="fas fa-building"></i> 思浦奈医疗科技(上海)有限公司
+										</div>
+										<p class="project-description">
+											这是一个关于医学骨科DICOM处理的产品，项目具有完整的基于DICOM图像进行数据测量，进行角度，长度等的测算，里面包含AI椎体脚点的计算。
+										</p>
+										<div class="project-tech">
+											<span class="tech-tag">Vue</span>
+											<span class="tech-tag">TypeScript</span>
+											<span class="tech-tag">Canvas</span>
+											<span class="tech-tag">cornerstoneJs</span>
+										</div>
+									</div>
+								</div>
+
+								<!-- 项目3 -->
+								<div class="project-card" data-project-id="3">
+									<div class="project-header">
+										<h3 class="project-title">申能燃料数据分析系统</h3>
+										<div class="project-period">2022/01 - 2022/07</div>
+									</div>
+									<div class="project-body">
+										<div class="project-company">
+											<i class="fas fa-building"></i> 上海挚世科技信息有限公司
+										</div>
+										<p class="project-description">
+											公司管理平台，前后端分离项目，包括主驾驶舱和多个专业分驾驶舱，使用ECharts进行数据可视化。
+										</p>
+										<div class="project-tech">
+											<span class="tech-tag">Vue.js</span>
+											<span class="tech-tag">JavaScript</span>
+											<span class="tech-tag">ECharts</span>
+											<span class="tech-tag">Element UI</span>
+										</div>
+									</div>
+								</div>
+
+								<!-- 项目4 -->
+								<div class="project-card" data-project-id="4">
+									<div class="project-header">
+										<h3 class="project-title">青海新能源_企业微信</h3>
+										<div class="project-period">2021/10 - 2021/12</div>
+									</div>
+									<div class="project-body">
+										<div class="project-company">
+											<i class="fas fa-building"></i> 上海挚世科技信息有限公司
+										</div>
+										<p class="project-description">
+											企业微信建设项目，移动端项目，包括订餐预定、会议室预定、活动场地预定、移动考试等功能。
+										</p>
+										<div class="project-tech">
+											<span class="tech-tag">Vue.js</span>
+											<span class="tech-tag">JavaScript</span>
+											<span class="tech-tag">Python</span>
+											<span class="tech-tag">MySQL</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+
+					<!-- 右侧边栏 -->
+					<div class="right-column">
+						<!-- 专业技能 -->
+						<section id="skills" class="card">
+							<div class="card-header">
+								<div class="card-icon">
+									<i class="fas fa-laptop-code"></i>
+								</div>
+								<h2 class="card-title">专业技能</h2>
+							</div>
+
+							<div class="skill-category">
+								<h3 class="skill-category-title">核心技术</h3>
+								<div class="skill-list">
+									<div class="skill-item">HTML5/CSS3</div>
+									<div class="skill-item">JavaScript ES6+</div>
+									<div class="skill-item">TypeScript</div>
+									<div class="skill-item">Vue.js</div>
+									<div class="skill-item">微信小程序</div>
+									<div class="skill-item">React</div>
+								</div>
+							</div>
+
+							<div class="skill-category">
+								<h3 class="skill-category-title">工具 & 框架</h3>
+								<div class="skill-list">
+									<div class="skill-item">Git</div>
+									<div class="skill-item">Webpack</div>
+									<div class="skill-item">Vite</div>
+									<div class="skill-item">Element UI</div>
+									<div class="skill-item">Vant</div>
+									<div class="skill-item">ECharts</div>
+									<div class="skill-item">uView</div>
+									<div class="skill-item">Sass/Less</div>
+								</div>
+							</div>
+
+							<div class="skill-category">
+								<h3 class="skill-category-title">其他技能</h3>
+								<div class="skill-list">
+									<div class="skill-item">响应式设计</div>
+									<div class="skill-item">性能优化</div>
+									<div class="skill-item">团队协作</div>
+									<div class="skill-item">项目管理</div>
+									<div class="skill-item">微软MTA认证</div>
+									<div class="skill-item">uniapp</div>
+								</div>
+							</div>
+						</section>
+
+						<!-- 教育经历 -->
+						<section class="card">
+							<div class="card-header">
+								<div class="card-icon">
+									<i class="fas fa-graduation-cap"></i>
+								</div>
+								<h2 class="card-title">教育经历</h2>
+							</div>
+
+							<div class="education-card">
+								<div class="education-icon">
+									<i class="fas fa-university"></i>
+								</div>
+								<div class="education-info">
+									<h3>渭南职业技术学院</h3>
+									<div class="education-details">
+										<div>前端开发 | 专科</div>
+										<div>2019.09 - 2022.07</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<!-- 证书展示 -->
+						<section class="card">
+							<div class="card-header">
+								<div class="card-icon">
+									<i class="fas fa-certificate"></i>
+								</div>
+								<h2 class="card-title">证书</h2>
+							</div>
+
+							<div class="certificate-badge">
+								<div class="certificate-icon">
+									<i class="fas fa-award"></i>
+								</div>
+								<div class="certificate-info">
+									<h4>微软MTA认证证书</h4>
+									<p>前端开发专业认证</p>
+								</div>
+							</div>
+						</section>
+
+						<!-- 自我评价 -->
+						<section id="about" class="card">
+							<div class="card-header">
+								<div class="card-icon">
+									<i class="fas fa-user-check"></i>
+								</div>
+								<h2 class="card-title">自我评价</h2>
+							</div>
+
+							<div class="evaluation-item">
+								<div class="evaluation-icon">
+									<i class="fas fa-code"></i>
+								</div>
+								<div class="evaluation-text">
+									熟练掌握HTML、CSS、JavaScript、jQuery、Ajax等前端技术，能够灵活运用在页面与程序的交互过程中。
+								</div>
+							</div>
+
+							<div class="evaluation-item">
+								<div class="evaluation-icon">
+									<i class="fas fa-paint-brush"></i>
+								</div>
+								<div class="evaluation-text">
+									熟练使用前端框架Vue，以及组件库Element UI、Vant等，并能熟练开发项目。
+								</div>
+							</div>
+
+							<div class="evaluation-item">
+								<div class="evaluation-icon">
+									<i class="fas fa-users"></i>
+								</div>
+								<div class="evaluation-text">
+									善于与人沟通，性格开朗活泼，乐观积极抗压能力强，适应性强，对待工作态度认真，有较强的团队合作意识。
+								</div>
+							</div>
+
+							<div class="evaluation-item">
+								<div class="evaluation-icon">
+									<i class="fas fa-rocket"></i>
+								</div>
+								<div class="evaluation-text">
+									熟练应用VUE、微信小程序等框架，能使用这些脚手架进行项目开发。负责平台Web前端架构设计，带领团队高质高效完成开发任务。
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<div class="container">
+				<div class="footer-container">
+					<div class="footer-logo">
+						<div class="logo-circle">L</div>
+						<span>刘超</span>
+					</div>
+
+					<div class="footer-contact">
+						<a href="tel:13572746738" class="footer-contact-item">
+							<i class="fas fa-phone"></i>
+							<span>13572746738</span>
+						</a>
+
+						<a href="mailto:2253938296@qq.com" class="footer-contact-item">
+							<i class="fas fa-envelope"></i>
+							<span>2253938296@qq.com</span>
+						</a>
+
+						<div class="footer-contact-item">
+							<i class="fas fa-briefcase"></i>
+							<span>前端开发工程师 · 4年经验</span>
+						</div>
+					</div>
+
+					<div class="copyright">
+						<p>© 2026 刘超 - 前端开发工程师 | 期望薪资: 10-13K</p>
+						<p style="margin-top: 10px;">最后更新: 2026年1月</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// 项目数据
+			const projects = {
+				1: {
+					title: "西铁院校友小程序+pc",
+					company: "西安云锦汇科技有限公司",
+					period: "2025/06 - 至今",
+					description: `
+						<p>本项目是一个使用vue3+ts的项目做的管理端，移动端是一个原生的微信小程序开发项目，里面包含小程序注册，校友会管理、企业招聘以及发起活动，微信消息推送等功能，PC端是一个后台管理系统，沿用芋道快速开发框架进行二次开发。</p>
+					`,
+					techImplementation: `
+						<ul>
+							<li>使用vue框架进行构建项目（其中我主要负责的是前端部分），前端部分使用了vue3以及ES6语法以及前端的组件库，让代码非常简洁，便于读写，运转的效率又非常的高</li>
+							<li>项目采用mysql+java8来构建后台服务器</li>
+							<li>使用vant组件库里面的东西来实现小程序页面样式美观</li>
+							<li>合理使用钩子函数，实现数据的监听、渲染页面、页面节点的实例化功能</li>
+							<li>使用element等前端组件搭建页面</li>
+						</ul>
+					`,
+					techStack: ["Vue3", "TypeScript", "HTML5/CSS3", "ECharts", "微信小程序"],
+					responsibilities: `
+						<ul>
+							<li>参与需求分析，理解需求，使用前端技术实现功能，主要是使用ts写逻辑部分</li>
+							<li>根据UI设计完成前端</li>
+							<li>使用微信小程序语法完成页面逻辑设计，与后端进行高效数据连接</li>
+							<li>配合后端工程师实现页面功能，接口以及数据的前后端处理</li>
+							<li>小程序页面的样式修改</li>
+						</ul>
+					`,
+					highlights: `
+						<ul>
+							<li>采用Vue3+TypeScript现代化技术栈，提升开发效率和代码质量</li>
+							<li>实现微信小程序与PC管理端数据同步，提升用户体验</li>
+							<li>使用ECharts进行数据可视化展示，直观呈现校友会数据</li>
+							<li>集成微信消息推送功能，增强用户互动性</li>
+						</ul>
+					`
+				},
+				2: {
+					title: "脊柱外科测量软件",
+					company: "思浦奈医疗科技(上海)有限公司",
+					period: "2022/07 - 2025/04",
+					description: `
+						<p>这是一个关于医学骨科DICOM处理的产品，项目具有完整的基于DICOM图像进行数据测量，进行角度，长度等的测算，里面包含AI椎体脚点的计算，根据椎体数据进行快速进行人体参数的计算，并可以进行输出报告，以及报告的PDF导出，大大的提高了医生的工作效率，可以预览查看CT影像，也会根据CT影像进行快速三维重建，帮助医生进行病灶的快速诊断，项目整体使用VUE和vite进行项目搭建，实现项目的主要功能，主要使用的是canvas绘图，进行了项目的整体开发。</p>
+					`,
+					techImplementation: `
+						<ul>
+							<li>界面使用vue进行项目搭建，使用vuex进行状态管理</li>
+							<li>利用canvas进行图像绘制，利用第三方框架，实现与图像联动，计算数据</li>
+							<li>集成cornerstone.js进行DICOM图像处理和显示</li>
+							<li>实现三维立体重建影像功能，辅助医生进行诊断</li>
+							<li>开发PDF报告导出功能，提升医生工作效率</li>
+						</ul>
+					`,
+					techStack: ["JavaScript", "TypeScript", "Vue", "HTML5/Sass", "Canvas", "cornerstoneJs"],
+					responsibilities: `
+						<ul>
+							<li>参与需求分析，理解需求，使用前端技术实现功能，主要是使用Js或者Ts写逻辑部分</li>
+							<li>根据UI设计完成前端</li>
+							<li>使用HTML5和sass构建页面绘制页面</li>
+							<li>配合后端工程师，以及算法工程师，实现页面功能，接口以及数据的前后端处理</li>
+						</ul>
+					`,
+					highlights: `
+						<ul>
+							<li>医疗影像处理项目，具有较高的技术难度和专业性</li>
+							<li>实现CT图像显示和三维重建，提升诊断准确性</li>
+							<li>集成AI算法，自动计算椎体脚点，提高测量效率</li>
+							<li>支持PDF报告导出，满足医疗行业文档需求</li>
+						</ul>
+					`
+				},
+				3: {
+					title: "申能燃料数据分析系统（pc端+移动端）",
+					company: "上海挚世科技信息有限公司",
+					period: "2022/01 - 2022/07",
+					description: `
+						<p>本项目是一个申能燃料数据分析系统，是一个公司的管理平台，是一个前后端分离项目，前端主要使用vue3进行搭建，后端则使用java8进行书写，本项目包括一个主驾驶舱，以及各个专业的分驾驶舱，例如：销售专业（具体销售情况占比，以及统计），财务专业（公司支出，以及回报收益），调运专业（原材料的运送方式，以及当前位置和未来的10天的预计到达时间，到达批次），合同专业，结算专业等，项目下包括申能所有旗下的公司的数据分析系统制作，例如：上海外高桥第二、第三发电有限责任公司，项目中的大部分数据使用了echarts可视化开发来做，进行图表的操作，同时使用element ui、vant等前端组件库进行操作，使页面的风格以及流畅度更上一层楼。利用vue进行数据的获取，axios进行后台请求等，实现页面的灵活跳转，使页面的体验度更好，项目运转更灵活。</p>
+					`,
+					techImplementation: `
+						<ul>
+							<li>使用vue框架进行构建项目（其中我主要负责的是前端部分），前端部分使用了vue，jquery以及ES6语法以及前端的组件库，让代码非常简洁，便于读写，运转的效率又非常的高</li>
+							<li>项目采用mysql+java8来构建后台服务器</li>
+							<li>使用vant组件库里面的东西来实现数据下拉刷新</li>
+							<li>合理使用钩子函数，实现数据的监听、渲染页面、页面节点的实例化功能</li>
+							<li>使用element ui、vant等前端组件搭建页面</li>
+						</ul>
+					`,
+					techStack: ["Vue.js", "JavaScript", "Java8", "HTML5/CSS3", "ECharts", "Vant", "Element UI"],
+					responsibilities: `
+						<ul>
+							<li>参与了客户需求分析和页面设计，使用Vue-Cli脚手架完成界面的绘制</li>
+							<li>在界面使用@click以及v-model双向绑定等获取值，完成页面动态数据值的获取</li>
+							<li>参与使用mysql完成数据的存储以及后台数据处理调用，使用js和vue各个插件完成界面交互</li>
+							<li>使用vue框架，vue-router搭建项目路由</li>
+							<li>配合后台开发人员完成数据的存储以及后台数据处理调用</li>
+							<li>完成界面交互，对前端性能进行优化等</li>
+						</ul>
+					`,
+					highlights: `
+						<ul>
+							<li>大型企业级数据分析系统，涵盖多个专业领域</li>
+							<li>使用ECharts实现丰富的数据可视化展示</li>
+							<li>支持PC端和移动端，实现响应式设计</li>
+							<li>集成多公司数据管理，提升企业管理效率</li>
+						</ul>
+					`
+				},
+				4: {
+					title: "青海新能源_企业微信",
+					company: "上海挚世科技信息有限公司",
+					period: "2021/10 - 2021/12",
+					description: `
+						<p>本项目是一个青海新能源的企业微信建设项目，是一个公司的管理平台，利用企业微信进行搭建，本项目包括一个主界面，以及诸多分页构建而成，是一个移动端项目，项目包括：订餐预定、会议室预定、活动场地预定、客饭申请、电量竞猜、信息收集、学习园地、以及移动考试等，项目中使用vue框架进行开发，页面多次使用ajax进行了无刷新请求后台数据，实现页面的灵活跳转，使页面的体验度更好，项目运转更灵活，给客户留下了非常好的使用体验。</p>
+					`,
+					techImplementation: `
+						<ul>
+							<li>使用vue框架进行构建项目（其中我主要负责的是前端部分），前端部分使用了vue，jquery以及ES6语法，让代码非常简洁，运转的效率又非常的高</li>
+							<li>项目采用mysql+Python来构建后台服务器</li>
+							<li>使用vant组件库里面的东西来实现数据下拉刷新</li>
+							<li>合理使用钩子函数，实现数据的监听、渲染页面</li>
+							<li>集成企业微信API，实现企业微信内部应用</li>
+						</ul>
+					`,
+					techStack: ["Vue.js", "JavaScript", "Python", "HTML5/CSS3", "MySQL", "企业微信API"],
+					responsibilities: `
+						<ul>
+							<li>参与了客户需求分析和页面设计，使用Vue-Cli脚手架完成界面的绘制</li>
+							<li>在界面使用@click以及v-model双向绑定等获取值，完成页面动态数据值的获取</li>
+							<li>参与使用mysql完成数据的存储以及后台数据处理调用，使用js和vue各个插件完成界面交互</li>
+							<li>使用vue框架，vue-router搭建项目路由</li>
+							<li>配合后台开发人员完成数据的存储以及后台数据处理调用</li>
+							<li>完成界面交互，对前端性能进行优化等</li>
+						</ul>
+					`,
+					highlights: `
+						<ul>
+							<li>企业微信内部应用开发，提升企业内部工作效率</li>
+							<li>涵盖多个实用功能模块，满足企业日常管理需求</li>
+							<li>移动端优化设计，提供良好的用户体验</li>
+							<li>集成企业微信消息推送，增强信息传达效率</li>
+						</ul>
+					`
+				}
+			};
+
+			// DOM元素
+			const projectModal = document.getElementById('projectModal');
+			const closeModalBtn = document.getElementById('closeModal');
+			const downloadBtn = document.getElementById('downloadBtn');
+			const contactBtn = document.getElementById('contactBtn');
+			const projectCards = document.querySelectorAll('.project-card');
+
+			// 打开项目详情模态框
+			projectCards.forEach(card => {
+				card.addEventListener('click', () => {
+					const projectId = card.getAttribute('data-project-id');
+					const project = projects[projectId];
+					
+					if (project) {
+						// 设置模态框内容
+						document.getElementById('modalProjectTitle').textContent = project.title;
+						document.getElementById('modalCompanyName').textContent = project.company;
+						document.getElementById('modalProjectPeriod').textContent = project.period;
+						document.getElementById('modalProjectDescription').innerHTML = project.description;
+						document.getElementById('modalProjectTechImplementation').innerHTML = project.techImplementation;
+						document.getElementById('modalProjectResponsibilities').innerHTML = project.responsibilities;
+						document.getElementById('modalProjectHighlights').innerHTML = project.highlights;
+						
+						// 设置技术栈标签
+						const techStackContainer = document.getElementById('modalTechStack');
+						techStackContainer.innerHTML = '';
+						project.techStack.forEach(tech => {
+							const tag = document.createElement('span');
+							tag.className = 'modal-tech-tag';
+							tag.textContent = tech;
+							techStackContainer.appendChild(tag);
+						});
+						
+						// 显示模态框
+						projectModal.classList.add('show');
+						document.body.style.overflow = 'hidden';
+					}
+				});
+			});
+
+			// 关闭模态框
+			closeModalBtn.addEventListener('click', () => {
+				projectModal.classList.remove('show');
+				document.body.style.overflow = 'auto';
+			});
+
+			// 点击模态框外部关闭
+			projectModal.addEventListener('click', (e) => {
+				if (e.target === projectModal) {
+					projectModal.classList.remove('show');
+					document.body.style.overflow = 'auto';
+				}
+			});
+
+			// 下载简历功能
+			downloadBtn.addEventListener('click', () => {
+				// 在实际应用中，这里应该是真实的PDF文件URL
+				const pdfUrl = '刘超-前端开发-13572746738_20260107155922.pdf'; // 相对路径
+				
+				    // 创建一个临时的 <a> 标签用于触发下载
+				    const link = document.createElement('a');
+				    link.href = pdfUrl;
+				    link.download = '刘超(13572746738)-前端开发-简历.pdf'; // 设置下载的文件名（可选）
+				    document.body.appendChild(link);
+				    link.click(); // 触发点击事件
+				    document.body.removeChild(link); // 清理 DOM
+			});
+
+			// 立即联系功能
+			contactBtn.addEventListener('click', () => {
+				// 这里可以添加联系逻辑，例如打开邮件客户端
+				const email = '2253938296@qq.com';
+				const subject = '前端开发职位咨询 - 刘超';
+				const body = `尊敬的刘超先生：\n\n我在您的个人简历网站上看到了您的信息，对您的前端开发经验和技能印象深刻。希望能与您进一步沟通。\n\n此致\n敬礼`;
+				
+				window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+			});
+
+			// 页面加载完成后添加滚动动画
+			document.addEventListener('DOMContentLoaded', function() {
+				// 添加卡片进入动画
+				const cards = document.querySelectorAll('.card, .project-card');
+				cards.forEach((card, index) => {
+					card.style.opacity = '0';
+					card.style.transform = 'translateY(20px)';
+					
+					setTimeout(() => {
+						card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+						card.style.opacity = '1';
+						card.style.transform = 'translateY(0)';
+					}, 100 + index * 100);
+				});
+			});
+		</script>
+	</body>
+</html>
